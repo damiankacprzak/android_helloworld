@@ -1,4 +1,4 @@
-package com.github.damiankacprzak.helloworld.ui.base;
+package com.github.damiankacprzak.helloworld.presentation.base;
 
 public abstract class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 

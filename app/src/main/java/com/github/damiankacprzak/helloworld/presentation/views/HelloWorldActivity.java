@@ -1,4 +1,4 @@
-package com.github.damiankacprzak.helloworld.ui.views;
+package com.github.damiankacprzak.helloworld.presentation.views;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

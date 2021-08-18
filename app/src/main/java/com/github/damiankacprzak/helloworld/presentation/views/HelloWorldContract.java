@@ -1,7 +1,7 @@
-package com.github.damiankacprzak.helloworld.ui.views;
+package com.github.damiankacprzak.helloworld.presentation.views;
 
-import com.github.damiankacprzak.helloworld.ui.base.MvpPresenter;
-import com.github.damiankacprzak.helloworld.ui.base.MvpView;
+import com.github.damiankacprzak.helloworld.presentation.base.MvpPresenter;
+import com.github.damiankacprzak.helloworld.presentation.base.MvpView;
 
 public interface HelloWorldContract {
     interface View extends MvpView {
