@@ -5,7 +5,7 @@ import com.github.damiankacprzak.helloworld.presentation.base.MvpView;
 
 public interface HelloWorldContract {
     interface View extends MvpView {
-        void updateCounter(int counter);
+        void updateCounter(String counter);
     }
 
     interface Presenter extends MvpPresenter<View> {

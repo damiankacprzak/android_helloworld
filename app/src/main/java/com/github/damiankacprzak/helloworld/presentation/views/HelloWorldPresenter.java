@@ -1,5 +1,6 @@
 package com.github.damiankacprzak.helloworld.presentation.views;
 
+import com.github.damiankacprzak.helloworld.domain.NumberToOrdinalConverter;
 import com.github.damiankacprzak.helloworld.domain.HelloWorldPlayer;
 import com.github.damiankacprzak.helloworld.domain.model.Counter;
 import com.github.damiankacprzak.helloworld.domain.usecases.GetHelloWorldCounter;
@@ -32,7 +33,8 @@ public class HelloWorldPresenter extends BasePresenter<HelloWorldContract.View> 
         super.attach(view);
 
         counter = getHelloWorldCounter.get();
-        view.updateCounter(counter.getValue());
+
+        view.updateCounter(NumberToOrdinalConverter.toOrdinal(counter.getValue()));
     }
 
     @Override
@@ -41,7 +43,7 @@ public class HelloWorldPresenter extends BasePresenter<HelloWorldContract.View> 
 
             increaseHelloWorldCounter.increase(counter);
             saveHelloWorldCounter.save(counter);
-            view.updateCounter(counter.getValue());
+            view.updateCounter(NumberToOrdinalConverter.toOrdinal(counter.getValue()));
             helloWorldPlayer.play();
         }
     }

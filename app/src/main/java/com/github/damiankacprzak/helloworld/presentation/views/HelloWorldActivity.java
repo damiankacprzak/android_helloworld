@@ -34,8 +34,8 @@ public class HelloWorldActivity extends AppCompatActivity implements HelloWorldC
     }
 
     @Override
-    public void updateCounter(int counter) {
-        ((TextView) findViewById(R.id.textView_counter)).setText(String.valueOf(counter));
+    public void updateCounter(String counter) {
+        ((TextView) findViewById(R.id.textView_counter)).setText(getResources().getString(R.string.for_the,counter));
     }
 
     @Override
