@@ -26,7 +26,7 @@ public class AppPreferencesRepository implements AppPreferences {
     }
 
     @Override
-    public void clear() {
+    public void clearHelloWorldCounter() {
         sharedPrefs.edit().clear().apply();
     }
 }

@@ -10,5 +10,6 @@ public interface HelloWorldContract {
 
     interface Presenter extends MvpPresenter<View> {
         void sayHelloWorld();
+        void clearHelloWorld();
     }
 }

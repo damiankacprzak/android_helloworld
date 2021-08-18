@@ -3,6 +3,8 @@ package com.github.damiankacprzak.helloworld.presentation.views;
 import com.github.damiankacprzak.helloworld.domain.NumberToOrdinalConverter;
 import com.github.damiankacprzak.helloworld.domain.HelloWorldPlayer;
 import com.github.damiankacprzak.helloworld.domain.model.Counter;
+import com.github.damiankacprzak.helloworld.domain.usecases.EraseHelloWorldCounter;
+import com.github.damiankacprzak.helloworld.domain.usecases.EraseHelloWorldCounterImpl;
 import com.github.damiankacprzak.helloworld.domain.usecases.GetHelloWorldCounter;
 import com.github.damiankacprzak.helloworld.domain.usecases.GetHelloWorldCounterImpl;
 import com.github.damiankacprzak.helloworld.domain.usecases.IncreaseHelloWorldCounter;
@@ -17,6 +19,7 @@ public class HelloWorldPresenter extends BasePresenter<HelloWorldContract.View> 
     private GetHelloWorldCounter getHelloWorldCounter;
     private SaveHelloWorldCounter saveHelloWorldCounter;
     private IncreaseHelloWorldCounter increaseHelloWorldCounter;
+    private EraseHelloWorldCounter eraseHelloWorldCounter;
 
     private HelloWorldPlayer helloWorldPlayer;
 
@@ -26,6 +29,7 @@ public class HelloWorldPresenter extends BasePresenter<HelloWorldContract.View> 
         getHelloWorldCounter = new GetHelloWorldCounterImpl();
         increaseHelloWorldCounter = new IncreaseHelloWorldCounterImpl();
         saveHelloWorldCounter = new SaveHelloWorldCounterImpl();
+        eraseHelloWorldCounter = new EraseHelloWorldCounterImpl();
     }
 
     @Override
@@ -46,6 +50,14 @@ public class HelloWorldPresenter extends BasePresenter<HelloWorldContract.View> 
             view.updateCounter(NumberToOrdinalConverter.toOrdinal(counter.getValue()));
             helloWorldPlayer.play();
         }
+    }
+
+    @Override
+    public void clearHelloWorld() {
+        eraseHelloWorldCounter.erase();
+        counter = getHelloWorldCounter.get();
+
+        view.updateCounter(NumberToOrdinalConverter.toOrdinal(counter.getValue()));
     }
 
     @Override
