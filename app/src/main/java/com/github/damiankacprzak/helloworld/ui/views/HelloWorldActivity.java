@@ -5,11 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.github.damiankacprzak.helloworld.HelloWorldPlayer;
 import com.github.damiankacprzak.helloworld.R;
 import com.github.damiankacprzak.helloworld.data.prefs.*;
 
 public class HelloWorldActivity extends AppCompatActivity implements HelloWorldContract.View {
-
     private HelloWorldPresenter presenter;
 
     @Override
@@ -17,7 +17,10 @@ public class HelloWorldActivity extends AppCompatActivity implements HelloWorldC
         super.onCreate(savedInstanceState);
 
         AppPreferences appPreferences = new AppPreferencesHelper(getApplicationContext());
-        presenter = new HelloWorldPresenter(appPreferences);
+        HelloWorldPlayer helloWorldPlayer = new HelloWorldPlayer(getApplicationContext());
+
+
+        presenter = new HelloWorldPresenter(appPreferences, helloWorldPlayer);
 
         setContentView(R.layout.helloworld_activity);
 
