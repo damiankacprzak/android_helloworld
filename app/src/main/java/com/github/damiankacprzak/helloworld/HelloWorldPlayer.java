@@ -5,25 +5,35 @@ import android.media.MediaPlayer;
 
 public class HelloWorldPlayer implements MediaPlayer.OnCompletionListener {
 
-    public boolean isPlaying = true;
+    private MediaPlayer mediaPlayer;
     private Context context;
 
     public HelloWorldPlayer(Context context) {
         this.context = context;
     }
 
-    @Override
-    public void onCompletion(MediaPlayer mediaPlayer) {
-        isPlaying = true;
-        mediaPlayer.release();
+    public boolean isPlaying() {
+
+        if (mediaPlayer == null) return false;
+
+        try {
+            return mediaPlayer.isPlaying();
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
-    public void sayHelloWorld() {
-        if (isPlaying) {
-            isPlaying = false;
-            MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.hello_world);
-            mediaPlayer.setOnCompletionListener(this);
-            mediaPlayer.start();
-        }
+    public void play() {
+        mediaPlayer = MediaPlayer.create(context, R.raw.hello_world);
+        mediaPlayer.setLooping(false);
+
+        mediaPlayer.start();
+    }
+
+    @Override
+    public void onCompletion(MediaPlayer mp) {
+        mediaPlayer.release();
+        mediaPlayer = null;
     }
 }

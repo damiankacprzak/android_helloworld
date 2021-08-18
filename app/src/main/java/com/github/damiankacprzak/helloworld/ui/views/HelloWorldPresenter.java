@@ -1,16 +1,15 @@
 package com.github.damiankacprzak.helloworld.ui.views;
 
 import com.github.damiankacprzak.helloworld.HelloWorldPlayer;
-import com.github.damiankacprzak.helloworld.ui.base.BasePresenter;
 import com.github.damiankacprzak.helloworld.data.prefs.AppPreferences;
-
+import com.github.damiankacprzak.helloworld.ui.base.BasePresenter;
 
 public class HelloWorldPresenter extends BasePresenter<HelloWorldContract.View> implements HelloWorldContract.Presenter {
 
     private AppPreferences appPreferences;
     private HelloWorldPlayer helloWorldPlayer;
 
-    public HelloWorldPresenter(AppPreferences appPreferences, HelloWorldPlayer helloWorldPlayer ) {
+    public HelloWorldPresenter(AppPreferences appPreferences, HelloWorldPlayer helloWorldPlayer) {
         this.appPreferences = appPreferences;
         this.helloWorldPlayer = helloWorldPlayer;
     }
@@ -24,18 +23,15 @@ public class HelloWorldPresenter extends BasePresenter<HelloWorldContract.View> 
 
     @Override
     public void sayHelloWorld() {
-        if (helloWorldPlayer.isPlaying) {
+        if (!helloWorldPlayer.isPlaying()) {
             appPreferences.saveHelloWorldCounter(appPreferences.getHelloWorldCounter() + 1);
             view.updateCounter(appPreferences.getHelloWorldCounter());
-            helloWorldPlayer.sayHelloWorld();
+            helloWorldPlayer.play();
         }
-
     }
 
     @Override
     public void detach() {
         super.detach();
     }
-
-
 }
