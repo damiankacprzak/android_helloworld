@@ -3,14 +3,16 @@ package com.github.damiankacprzak.helloworld.data.prefs;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.github.damiankacprzak.helloworld.HelloWorldApplication;
+
 public class AppPreferencesHelper implements AppPreferences {
     private static final String APP_PREFS = "APP_PREFS";
     private static final String PREF_KEY_HELLOWORLD_COUNTER = "PREF_KEY_HELLOWORLD_COUNTER";
 
     private final SharedPreferences sharedPrefs;
 
-    public AppPreferencesHelper(Context context) {
-        sharedPrefs = context.getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE);
+    public AppPreferencesHelper() {
+        sharedPrefs = HelloWorldApplication.getAppContext().getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE);
     }
 
     @Override

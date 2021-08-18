@@ -2,6 +2,7 @@ package com.github.damiankacprzak.helloworld.ui.views;
 
 import com.github.damiankacprzak.helloworld.HelloWorldPlayer;
 import com.github.damiankacprzak.helloworld.data.prefs.AppPreferences;
+import com.github.damiankacprzak.helloworld.data.prefs.AppPreferencesHelper;
 import com.github.damiankacprzak.helloworld.ui.base.BasePresenter;
 
 public class HelloWorldPresenter extends BasePresenter<HelloWorldContract.View> implements HelloWorldContract.Presenter {
@@ -9,9 +10,9 @@ public class HelloWorldPresenter extends BasePresenter<HelloWorldContract.View> 
     private AppPreferences appPreferences;
     private HelloWorldPlayer helloWorldPlayer;
 
-    public HelloWorldPresenter(AppPreferences appPreferences, HelloWorldPlayer helloWorldPlayer) {
-        this.appPreferences = appPreferences;
-        this.helloWorldPlayer = helloWorldPlayer;
+    public HelloWorldPresenter() {
+         appPreferences = new AppPreferencesHelper();
+         helloWorldPlayer = new HelloWorldPlayer();
     }
 
     @Override

@@ -8,8 +8,8 @@ public class HelloWorldPlayer implements MediaPlayer.OnCompletionListener {
     private MediaPlayer mediaPlayer;
     private Context context;
 
-    public HelloWorldPlayer(Context context) {
-        this.context = context;
+    public HelloWorldPlayer() {
+        this.context = HelloWorldApplication.getAppContext();
     }
 
     public boolean isPlaying() {
