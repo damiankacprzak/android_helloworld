@@ -14,6 +14,8 @@ public class HelloWorldPresenter extends BasePresenter<HelloWorldContract.View> 
     @Override
     public void attach(HelloWorldContract.View view) {
         super.attach(view);
+
+        view.updateCounter(appPreferences.getHelloWorldCounter());
     }
 
     @Override
