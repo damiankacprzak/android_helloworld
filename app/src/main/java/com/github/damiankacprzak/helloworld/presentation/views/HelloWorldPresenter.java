@@ -1,6 +1,6 @@
 package com.github.damiankacprzak.helloworld.presentation.views;
 
-import com.github.damiankacprzak.helloworld.HelloWorldPlayer;
+import com.github.damiankacprzak.helloworld.domain.HelloWorldPlayer;
 import com.github.damiankacprzak.helloworld.domain.model.Counter;
 import com.github.damiankacprzak.helloworld.domain.usecases.GetHelloWorldCounter;
 import com.github.damiankacprzak.helloworld.domain.usecases.GetHelloWorldCounterImpl;
