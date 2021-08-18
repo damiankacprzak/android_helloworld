@@ -13,17 +13,15 @@ import com.github.damiankacprzak.helloworld.R;
 public class HelloWorldActivity extends AppCompatActivity implements HelloWorldContract.View {
     private HelloWorldPresenter presenter;
 
-    private Toolbar toolbar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        presenter = new HelloWorldPresenter();
-
         setContentView(R.layout.helloworld_activity);
 
-        toolbar = findViewById(R.id.toolbar);
+        presenter = new HelloWorldPresenter();
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.app_name);
 
         setSupportActionBar(toolbar);
@@ -51,14 +49,12 @@ public class HelloWorldActivity extends AppCompatActivity implements HelloWorldC
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.ic_clear:
-                    presenter.clearHelloWorld();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.ic_reset) {
+            presenter.clearHelloWorld();
+            return true;
         }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
