@@ -1,6 +1,7 @@
 package com.github.damiankacprzak.helloworld.presentation.views;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -10,8 +11,19 @@ import android.widget.TextView;
 
 import com.github.damiankacprzak.helloworld.R;
 
+import butterknife.BindString;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class HelloWorldActivity extends AppCompatActivity implements HelloWorldContract.View {
     private HelloWorldPresenter presenter;
+
+    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.fab) FloatingActionButton fab;
+    @BindView(R.id.textView_counter) TextView tvCounter;
+
+    @BindString(R.string.hello_world) String helloWorld;
+    @BindString(R.string.ordinal_message) String ordinalMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,14 +31,15 @@ public class HelloWorldActivity extends AppCompatActivity implements HelloWorldC
 
         setContentView(R.layout.helloworld_activity);
 
+        ButterKnife.bind(this);
+
         presenter = new HelloWorldPresenter();
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.app_name);
+        toolbar.setTitle(helloWorld);
 
         setSupportActionBar(toolbar);
 
-        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
                 presenter.sayHelloWorld();
@@ -59,7 +72,7 @@ public class HelloWorldActivity extends AppCompatActivity implements HelloWorldC
 
     @Override
     public void updateCounter(String counter) {
-        ((TextView) findViewById(R.id.textView_counter)).setText(getResources().getString(R.string.for_the, counter));
+        tvCounter.setText(String.format(ordinalMessage,counter));
     }
 
     @Override
