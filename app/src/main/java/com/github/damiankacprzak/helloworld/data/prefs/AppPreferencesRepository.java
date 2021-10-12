@@ -1,18 +1,24 @@
 package com.github.damiankacprzak.helloworld.data.prefs;
 
-import android.content.Context;
+import android.app.Application;
 import android.content.SharedPreferences;
 
 import com.github.damiankacprzak.helloworld.HelloWorldApplication;
+import com.github.damiankacprzak.helloworld.di.components.DaggerSharedPreferencesComponent;
+import com.github.damiankacprzak.helloworld.di.modules.SharedPreferencesModule;
+
+import javax.inject.Inject;
 
 public class AppPreferencesRepository implements AppPreferences {
-    private static final String APP_PREFS = "APP_PREFS";
     private static final String PREF_KEY_HELLOWORLD_COUNTER = "PREF_KEY_HELLOWORLD_COUNTER";
 
-    private final SharedPreferences sharedPrefs;
+    @Inject
+    SharedPreferences sharedPrefs;
 
     public AppPreferencesRepository() {
-        sharedPrefs = HelloWorldApplication.getAppContext().getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE);
+        DaggerSharedPreferencesComponent.builder()
+                .sharedPreferencesModule(new SharedPreferencesModule((Application)
+                        HelloWorldApplication.getAppContext())).build().inject(this);
     }
 
     @Override
