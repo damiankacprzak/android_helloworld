@@ -1,16 +1,5 @@
 package com.github.damiankacprzak.helloworld.presentation.views;
 
-import android.app.Application;
-
-import com.github.damiankacprzak.helloworld.HelloWorldApplication;
-import com.github.damiankacprzak.helloworld.di.components.AppPreferencesRepositoryComponent;
-import com.github.damiankacprzak.helloworld.di.components.DaggerAppPreferencesRepositoryComponent;
-import com.github.damiankacprzak.helloworld.di.components.DaggerEraseHelloWorldCounterComponent;
-import com.github.damiankacprzak.helloworld.di.components.DaggerGetHelloWorldCounterComponent;
-import com.github.damiankacprzak.helloworld.di.components.DaggerSaveHelloWorldCounterComponent;
-import com.github.damiankacprzak.helloworld.di.components.DaggerSharedPreferencesComponent;
-import com.github.damiankacprzak.helloworld.di.components.SharedPreferencesComponent;
-import com.github.damiankacprzak.helloworld.di.modules.SharedPreferencesModule;
 import com.github.damiankacprzak.helloworld.domain.HelloWorldPlayer;
 import com.github.damiankacprzak.helloworld.domain.NumberToOrdinalConverter;
 import com.github.damiankacprzak.helloworld.domain.model.Counter;
@@ -24,33 +13,27 @@ import javax.inject.Inject;
 
 public class HelloWorldPresenter extends BasePresenter<HelloWorldContract.View> implements HelloWorldContract.Presenter {
 
+    private Counter counter;
 
-    Counter counter;
+    private GetHelloWorldCounterImpl getHelloWorldCounter;
+    private SaveHelloWorldCounterImpl saveHelloWorldCounter;
 
-    @Inject
-    GetHelloWorldCounterImpl getHelloWorldCounter;
-    @Inject
-    SaveHelloWorldCounterImpl saveHelloWorldCounter;
-    @Inject
-    IncreaseHelloWorldCounterImpl increaseHelloWorldCounter;
-    @Inject
-    EraseHelloWorldCounterImpl eraseHelloWorldCounter;
+    private IncreaseHelloWorldCounterImpl increaseHelloWorldCounter;
+
+    private EraseHelloWorldCounterImpl eraseHelloWorldCounter;
 
     private HelloWorldPlayer helloWorldPlayer;
 
-    public HelloWorldPresenter() {
+    @Inject
+    public HelloWorldPresenter(GetHelloWorldCounterImpl getHelloWorldCounter, IncreaseHelloWorldCounterImpl increaseHelloWorldCounter
+            , SaveHelloWorldCounterImpl saveHelloWorldCounter, EraseHelloWorldCounterImpl eraseHelloWorldCounter) {
+
         helloWorldPlayer = new HelloWorldPlayer();
 
-        SharedPreferencesComponent sharedPreferencesComponent = DaggerSharedPreferencesComponent.builder()
-                .sharedPreferencesModule(new SharedPreferencesModule((Application) HelloWorldApplication.getAppContext())).build();
-
-        AppPreferencesRepositoryComponent appPreferencesRepositoryComponent = DaggerAppPreferencesRepositoryComponent.builder()
-                .sharedPreferencesComponent(sharedPreferencesComponent).build();
-
-
-        DaggerGetHelloWorldCounterComponent.builder().appPreferencesRepositoryComponent(appPreferencesRepositoryComponent).build().inject(this);
-        DaggerSaveHelloWorldCounterComponent.builder().appPreferencesRepositoryComponent(appPreferencesRepositoryComponent).build().inject(this);
-        DaggerEraseHelloWorldCounterComponent.builder().appPreferencesRepositoryComponent(appPreferencesRepositoryComponent).build().inject(this);
+        this.getHelloWorldCounter = getHelloWorldCounter;
+        this.increaseHelloWorldCounter = increaseHelloWorldCounter;
+        this.saveHelloWorldCounter = saveHelloWorldCounter;
+        this.eraseHelloWorldCounter = eraseHelloWorldCounter;
     }
 
     @Override
