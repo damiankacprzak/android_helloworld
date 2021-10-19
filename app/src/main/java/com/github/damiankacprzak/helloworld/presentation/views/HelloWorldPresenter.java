@@ -22,13 +22,12 @@ public class HelloWorldPresenter extends BasePresenter<HelloWorldContract.View> 
 
     private EraseHelloWorldCounterImpl eraseHelloWorldCounter;
 
-    private HelloWorldPlayer helloWorldPlayer;
+    @Inject
+    HelloWorldPlayer helloWorldPlayer;
 
     @Inject
     public HelloWorldPresenter(GetHelloWorldCounterImpl getHelloWorldCounter, IncreaseHelloWorldCounterImpl increaseHelloWorldCounter
             , SaveHelloWorldCounterImpl saveHelloWorldCounter, EraseHelloWorldCounterImpl eraseHelloWorldCounter) {
-
-        helloWorldPlayer = new HelloWorldPlayer();
 
         this.getHelloWorldCounter = getHelloWorldCounter;
         this.increaseHelloWorldCounter = increaseHelloWorldCounter;

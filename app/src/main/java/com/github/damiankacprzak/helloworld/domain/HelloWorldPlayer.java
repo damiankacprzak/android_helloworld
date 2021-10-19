@@ -6,11 +6,14 @@ import android.media.MediaPlayer;
 import com.github.damiankacprzak.helloworld.HelloWorldApplication;
 import com.github.damiankacprzak.helloworld.R;
 
+import javax.inject.Inject;
+
 public class HelloWorldPlayer implements MediaPlayer.OnCompletionListener {
 
     private MediaPlayer mediaPlayer;
     private Context context;
-    
+
+    @Inject
     public HelloWorldPlayer() {
         this.context = HelloWorldApplication.getAppContext();
     }
