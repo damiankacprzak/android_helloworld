@@ -10,7 +10,7 @@ public class HelloWorldPlayer implements MediaPlayer.OnCompletionListener {
 
     private MediaPlayer mediaPlayer;
     private Context context;
-
+    
     public HelloWorldPlayer() {
         this.context = HelloWorldApplication.getAppContext();
     }
