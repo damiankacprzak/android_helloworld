@@ -11,15 +11,14 @@ import com.github.damiankacprzak.helloworld.di.modules.SharedPreferencesModule;
 
 public class HelloWorldApplication extends Application {
 
-    private AppComponent appComponent;
     private HelloWorldPresenterComponent helloWorldPresenterComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        appComponent = DaggerAppComponent.builder().appModule
-                (new AppModule(this)).sharedPreferencesModule(new SharedPreferencesModule()).build();
+        AppComponent appComponent = DaggerAppComponent.builder()
+                .appModule(new AppModule(this)).sharedPreferencesModule(new SharedPreferencesModule()).build();
 
         helloWorldPresenterComponent = DaggerHelloWorldPresenterComponent.builder().appComponent(appComponent).build();
     }

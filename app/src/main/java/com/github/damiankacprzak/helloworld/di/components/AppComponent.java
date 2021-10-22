@@ -10,6 +10,6 @@ import dagger.Component;
 
 @Component(modules = {AppModule.class, SharedPreferencesModule.class})
 public interface AppComponent {
-    Context provideContext();
-    SharedPreferences provideSharedPreferences();
+    Context context();
+    SharedPreferences sharedPreferences();
 }

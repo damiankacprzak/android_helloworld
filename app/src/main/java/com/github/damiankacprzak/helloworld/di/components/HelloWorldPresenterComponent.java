@@ -4,12 +4,12 @@ import com.github.damiankacprzak.helloworld.di.modules.EraseHelloWorldCounterMod
 import com.github.damiankacprzak.helloworld.di.modules.GetHelloWorldCounterModule;
 import com.github.damiankacprzak.helloworld.di.modules.IncreaseHelloWorldCounterModule;
 import com.github.damiankacprzak.helloworld.di.modules.SaveHelloWorldCounterModule;
-import com.github.damiankacprzak.helloworld.domain.usecases.IncreaseHelloWorldCounter;
 import com.github.damiankacprzak.helloworld.presentation.views.HelloWorldActivity;
 
 import dagger.Component;
 
-@Component(dependencies = AppComponent.class, modules = {GetHelloWorldCounterModule.class, IncreaseHelloWorldCounterModule.class, SaveHelloWorldCounterModule.class, EraseHelloWorldCounterModule.class})
+@Component(dependencies = AppComponent.class, modules = {GetHelloWorldCounterModule.class,
+        IncreaseHelloWorldCounterModule.class, SaveHelloWorldCounterModule.class, EraseHelloWorldCounterModule.class})
 public interface HelloWorldPresenterComponent {
     void inject(HelloWorldActivity activity);
 }

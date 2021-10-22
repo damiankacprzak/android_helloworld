@@ -1,5 +1,6 @@
 package com.github.damiankacprzak.helloworld.presentation.views;
 
+import android.app.Application;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -34,11 +35,12 @@ public class HelloWorldActivity extends AppCompatActivity implements HelloWorldC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+        ((HelloWorldApplication) getApplication()).getHelloWorldPresenterComponent().inject(this);
+
         setContentView(R.layout.helloworld_activity);
 
         ButterKnife.bind(this);
-
-        ((HelloWorldApplication) getApplication()).getHelloWorldPresenterComponent().inject(this);
 
         toolbar.setTitle(helloWorld);
 
