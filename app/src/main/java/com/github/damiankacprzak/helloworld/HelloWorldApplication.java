@@ -1,7 +1,6 @@
 package com.github.damiankacprzak.helloworld;
 
 import android.app.Application;
-import android.content.Context;
 
 import com.github.damiankacprzak.helloworld.di.components.AppComponent;
 import com.github.damiankacprzak.helloworld.di.components.DaggerAppComponent;
