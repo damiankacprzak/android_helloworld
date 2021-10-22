@@ -3,13 +3,16 @@ package com.github.damiankacprzak.helloworld;
 import android.content.Context;
 import android.media.MediaPlayer;
 
+import javax.inject.Inject;
+
 public class HelloWorldPlayer implements MediaPlayer.OnCompletionListener {
 
     private MediaPlayer mediaPlayer;
-    private Context context;
+    private Context appContext;
 
-    public HelloWorldPlayer() {
-        this.context = HelloWorldApplication.getAppContext();
+    @Inject
+    public HelloWorldPlayer(Context context) {
+        appContext = context;
     }
 
     public boolean isPlaying() {
@@ -25,7 +28,7 @@ public class HelloWorldPlayer implements MediaPlayer.OnCompletionListener {
     }
 
     public void play() {
-        mediaPlayer = MediaPlayer.create(context, R.raw.hello_world);
+        mediaPlayer = MediaPlayer.create(appContext, R.raw.hello_world);
         mediaPlayer.setLooping(false);
 
         mediaPlayer.start();

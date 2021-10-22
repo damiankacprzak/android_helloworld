@@ -20,7 +20,7 @@ public class HelloWorldPresenter extends BasePresenter<HelloWorldContract.View> 
 
     private IncreaseHelloWorldCounterImpl increaseHelloWorldCounter;
 
-    private EraseHelloWorldCounterImpl eraseHelloWorldCounter;
+    private EraseHelloWorldCounterImpl eraseHelloWorldCounter;  
 
     @Inject
     HelloWorldPlayer helloWorldPlayer;

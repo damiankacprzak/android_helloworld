@@ -4,7 +4,7 @@ import com.github.damiankacprzak.helloworld.presentation.views.HelloWorldActivit
 
 import dagger.Component;
 
-@Component(dependencies = SharedPreferencesComponent.class)
+@Component(dependencies = AppComponent.class)
 public interface HelloWorldPresenterComponent {
     void inject(HelloWorldActivity activity);
 }

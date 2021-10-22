@@ -1,6 +1,5 @@
 package com.github.damiankacprzak.helloworld.presentation.views;
 
-import android.app.Application;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -12,10 +11,6 @@ import android.widget.TextView;
 
 import com.github.damiankacprzak.helloworld.HelloWorldApplication;
 import com.github.damiankacprzak.helloworld.R;
-import com.github.damiankacprzak.helloworld.di.components.DaggerHelloWorldPresenterComponent;
-import com.github.damiankacprzak.helloworld.di.components.DaggerSharedPreferencesComponent;
-import com.github.damiankacprzak.helloworld.di.components.SharedPreferencesComponent;
-import com.github.damiankacprzak.helloworld.di.modules.SharedPreferencesModule;
 
 import javax.inject.Inject;
 
@@ -43,10 +38,7 @@ public class HelloWorldActivity extends AppCompatActivity implements HelloWorldC
 
         ButterKnife.bind(this);
 
-        SharedPreferencesComponent sharedPreferencesComponent = DaggerSharedPreferencesComponent.builder()
-                .sharedPreferencesModule(new SharedPreferencesModule((Application) HelloWorldApplication.getAppContext())).build();
-
-        DaggerHelloWorldPresenterComponent.builder().sharedPreferencesComponent(sharedPreferencesComponent).build().inject(this);
+        ((HelloWorldApplication) getApplication()).getHelloWorldPresenterComponent().inject(this);
 
         toolbar.setTitle(helloWorld);
 
