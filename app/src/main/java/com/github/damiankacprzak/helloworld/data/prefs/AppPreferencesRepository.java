@@ -2,8 +2,12 @@ package com.github.damiankacprzak.helloworld.data.prefs;
 
 import android.content.SharedPreferences;
 
+import com.github.damiankacprzak.helloworld.di.HelloWorldScreenScope;
+
 import javax.inject.Inject;
 
+
+ @HelloWorldScreenScope
 public class AppPreferencesRepository implements AppPreferences {
     private static final String PREF_KEY_HELLOWORLD_COUNTER = "PREF_KEY_HELLOWORLD_COUNTER";
 

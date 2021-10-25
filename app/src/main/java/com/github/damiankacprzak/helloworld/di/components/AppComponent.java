@@ -7,8 +7,6 @@ import com.github.damiankacprzak.helloworld.di.ApplicationScope;
 import com.github.damiankacprzak.helloworld.di.modules.AppModule;
 import com.github.damiankacprzak.helloworld.di.modules.SharedPreferencesModule;
 
-import javax.inject.Singleton;
-
 import dagger.Component;
 
 @ApplicationScope
