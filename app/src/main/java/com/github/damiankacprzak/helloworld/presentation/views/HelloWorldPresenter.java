@@ -68,6 +68,7 @@ public class HelloWorldPresenter extends BasePresenter<HelloWorldContract.View> 
 
     @Override
     public void detach() {
+        helloWorldPlayer.release();
         super.detach();
     }
 }
