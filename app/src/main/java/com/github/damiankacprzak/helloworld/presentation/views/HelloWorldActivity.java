@@ -12,10 +12,6 @@ import android.widget.TextView;
 
 import com.github.damiankacprzak.helloworld.HelloWorldApplication;
 import com.github.damiankacprzak.helloworld.R;
-import com.github.damiankacprzak.helloworld.di.components.DaggerHelloWorldPresenterComponent;
-import com.github.damiankacprzak.helloworld.di.components.DaggerSharedPreferencesComponent;
-import com.github.damiankacprzak.helloworld.di.components.SharedPreferencesComponent;
-import com.github.damiankacprzak.helloworld.di.modules.SharedPreferencesModule;
 
 import javax.inject.Inject;
 
@@ -39,14 +35,12 @@ public class HelloWorldActivity extends AppCompatActivity implements HelloWorldC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+        ((HelloWorldApplication) getApplication()).getHelloWorldPresenterComponent().inject(this);
+
         setContentView(R.layout.helloworld_activity);
 
         ButterKnife.bind(this);
-
-        SharedPreferencesComponent sharedPreferencesComponent = DaggerSharedPreferencesComponent.builder()
-                .sharedPreferencesModule(new SharedPreferencesModule((Application) HelloWorldApplication.getAppContext())).build();
-
-        DaggerHelloWorldPresenterComponent.builder().sharedPreferencesComponent(sharedPreferencesComponent).build().inject(this);
 
         toolbar.setTitle(helloWorld);
 
