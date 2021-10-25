@@ -3,6 +3,10 @@ package com.github.damiankacprzak.helloworld.di.modules;
 import android.app.Application;
 import android.content.Context;
 
+import com.github.damiankacprzak.helloworld.di.ApplicationScope;
+
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -14,6 +18,8 @@ public class AppModule {
         appContext = context;
     }
 
+
+    @ApplicationScope
     @Provides
     Context provideApplicationContext() {
         return appContext;
