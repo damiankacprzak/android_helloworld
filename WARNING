@@ -1,0 +1,5 @@
+Activity rotation causes detaching presenter and calling release method
+that puts MediaPlayer into  end state. Thus MediaPlayer instance cannot
+be provided as singleton due to the IllegalStateException caused by
+calling the setDataSource method the MediaPlayer reached the end
+state and we done with its.
