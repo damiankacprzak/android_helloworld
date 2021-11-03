@@ -6,15 +6,15 @@ import javax.inject.Inject;
 
 public class EraseHelloWorldCounterImpl implements EraseHelloWorldCounter {
 
-    private AppPreferencesRepository appPreferences;
+    private AppPreferencesRepository appPreferencesRepository;
 
     @Inject
-    public EraseHelloWorldCounterImpl(AppPreferencesRepository appPreferences) {
-        this.appPreferences = appPreferences;
+    public EraseHelloWorldCounterImpl(AppPreferencesRepository appPreferencesRepository) {
+        this.appPreferencesRepository = appPreferencesRepository;
     }
 
     @Override
     public void erase() {
-        appPreferences.clearHelloWorldCounter();
+        appPreferencesRepository.clearHelloWorldCounter();
     }
 }

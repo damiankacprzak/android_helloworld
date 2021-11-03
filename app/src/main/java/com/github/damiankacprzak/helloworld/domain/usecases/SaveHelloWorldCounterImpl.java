@@ -7,15 +7,15 @@ import javax.inject.Inject;
 
 public class SaveHelloWorldCounterImpl implements SaveHelloWorldCounter {
 
-    private AppPreferencesRepository appPreferences;
+    private AppPreferencesRepository appPreferencesRepository;
 
     @Inject
-    public SaveHelloWorldCounterImpl(AppPreferencesRepository appPreferences) {
-        this.appPreferences = appPreferences;
+    public SaveHelloWorldCounterImpl(AppPreferencesRepository appPreferencesRepository) {
+        this.appPreferencesRepository = appPreferencesRepository;
     }
 
     @Override
     public void save(Counter counter) {
-        appPreferences.saveHelloWorldCounter(counter.getValue());
+        appPreferencesRepository.saveHelloWorldCounter(counter.getValue());
     }
 }

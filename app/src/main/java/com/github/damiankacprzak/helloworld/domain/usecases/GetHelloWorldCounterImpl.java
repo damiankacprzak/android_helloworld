@@ -7,15 +7,15 @@ import javax.inject.Inject;
 
 public class GetHelloWorldCounterImpl implements GetHelloWorldCounter {
 
-    private AppPreferencesRepository appPreferences;
+    private AppPreferencesRepository appPreferencesRepository;
 
     @Inject
-    public GetHelloWorldCounterImpl(AppPreferencesRepository appPreferences) {
-        this.appPreferences = appPreferences;
+    public GetHelloWorldCounterImpl(AppPreferencesRepository appPreferencesRepository) {
+        this.appPreferencesRepository = appPreferencesRepository;
     }
 
     @Override
     public Counter get() {
-        return new Counter(appPreferences.getHelloWorldCounter());
+        return new Counter(appPreferencesRepository.getHelloWorldCounter());
     }
 }
