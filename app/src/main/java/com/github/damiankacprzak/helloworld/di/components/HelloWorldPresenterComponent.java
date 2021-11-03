@@ -1,7 +1,7 @@
 package com.github.damiankacprzak.helloworld.di.components;
 
 import com.github.damiankacprzak.helloworld.di.HelloWorldScreenScope;
-import com.github.damiankacprzak.helloworld.di.modules.AppPreferencesModule;
+import com.github.damiankacprzak.helloworld.di.modules.AppPreferencesRepositoryModule;
 import com.github.damiankacprzak.helloworld.di.modules.EraseHelloWorldCounterModule;
 import com.github.damiankacprzak.helloworld.di.modules.GetHelloWorldCounterModule;
 import com.github.damiankacprzak.helloworld.di.modules.IncreaseHelloWorldCounterModule;
@@ -13,7 +13,7 @@ import dagger.Component;
 
 
 @HelloWorldScreenScope
-@Component(dependencies = AppComponent.class, modules = {AppPreferencesModule.class, MediaPlayerModule.class, GetHelloWorldCounterModule.class,
+@Component(dependencies = AppComponent.class, modules = {AppPreferencesRepositoryModule.class, MediaPlayerModule.class, GetHelloWorldCounterModule.class,
         IncreaseHelloWorldCounterModule.class, SaveHelloWorldCounterModule.class, EraseHelloWorldCounterModule.class})
 public interface HelloWorldPresenterComponent {
     void inject(HelloWorldActivity activity);
