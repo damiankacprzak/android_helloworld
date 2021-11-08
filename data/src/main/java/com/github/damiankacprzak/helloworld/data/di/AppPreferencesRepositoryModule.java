@@ -1,4 +1,4 @@
-package com.github.damiankacprzak.helloworld.data.di.modules;
+package com.github.damiankacprzak.helloworld.data.di;
 
 import com.github.damiankacprzak.helloworld.data.di.HelloWorldScreenScope;
 import com.github.damiankacprzak.helloworld.domain.AppPreferencesRepository;

@@ -1,4 +1,4 @@
-package com.github.damiankacprzak.helloworld.domain.di.modules;
+package com.github.damiankacprzak.helloworld.domain.di;
 
 import com.github.damiankacprzak.helloworld.domain.usecases.GetHelloWorldCounter;
 import com.github.damiankacprzak.helloworld.domain.usecases.GetHelloWorldCounterImpl;
